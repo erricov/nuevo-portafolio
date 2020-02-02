@@ -201,11 +201,9 @@ $( "#next_skill_frontend" ).click(function() {
                       <a :href="card.link" class="btn mx-auto btn-md btn-block bg-light">Know more</a>
                     </div>
                 </div>`
-    })
+    });
     
-    var app = new Vue({
-      el: '#app',
-      data: {
+     var data = {
           show: false,
           cardContent: [
             
@@ -215,8 +213,11 @@ $( "#next_skill_frontend" ).click(function() {
               
               {id: 3, title: 'Backend Development & SQL', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-blue', link:'backend'},
           ]
-      },
+    }
     
+    var app = new Vue({
+      el: '#app',
+      data: data,   
     })
 </script>
 </body>
