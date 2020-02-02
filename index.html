@@ -53,20 +53,9 @@
 
     <div id="app">    
         <div class="container">
-          
-        <todo-item></todo-item>
-        
+                  
        <div class="card-deck text-center">
-              <div class="card text-white bg-blue mb-3" v-for="card in cardContent">
-                  <div class="card-header">{{card.title}}</div>
-                  <div class="card-body">
-                    <h5 class="card-title">{{card.secondTitle}}</h5>
-                    <p class="card-text">{{card.description}}</p>
-                  </div>
-                  <div class="">
-                      <a href="#" class="btn mx-auto btn-md btn-block bg-light">Know more</a>
-                    </div>
-                </div>
+             <card-item v-for="card in cardContent" v-bind:key="card.id" v-bind:card="card"></card-item>
         </div>
         
         <div class="row my-5">
@@ -197,27 +186,19 @@ $( "#next_skill_frontend" ).click(function() {
 <!--JQUERY END-->
 <!-- Vue -->
 <script>
-    // Define a new component called todo-item
-    Vue.component('todo-item', {
-      // The todo-item component now accepts a
-      // "prop", which is like a custom attribute.
-      // This prop is called todo.
-        data: function () {
-          return {
-            title: 'Hola',
-            cardContent: [
-            
-              {title: 'Web Design', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-blue'},
-            
-              {title: 'Frontend Development', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-purple'},
-              
-              {title: 'Backend Development & SQL', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-blue'},
-            ]
-              
-          }
-        },
-      //props: ['cardContent'],
-      template: '<li>{{ title }}</li>'
+    // Define a new component called card-item
+    Vue.component('card-item', {
+      props: ['card'],
+      template: `<div class="card text-white bg-blue mb-3">
+                  <div class="card-header">{{card.title}}</div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{card.secondTitle}}</h5>
+                    <p class="card-text">{{card.description}}</p>
+                  </div>
+                  <div class="">
+                      <a href="#" class="btn mx-auto btn-md btn-block bg-light">Know more</a>
+                    </div>
+                </div>`
     })
     
     var app = new Vue({
@@ -228,11 +209,11 @@ $( "#next_skill_frontend" ).click(function() {
           show: false,
           cardContent: [
             
-              {title: 'Web Design', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-blue'},
+              {id: 1, title: 'Web Design', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-blue'},
             
-              {title: 'Frontend Development', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-purple'},
+              {id: 2, title: 'Frontend Development', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-purple'},
               
-              {title: 'Backend Development & SQL', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-blue'},
+              {id: 3, title: 'Backend Development & SQL', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-blue'},
           ]
       },
     
