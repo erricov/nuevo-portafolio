@@ -14,6 +14,8 @@
 
 </head>
 <body>
+
+<div id="app">  
 	<!-- Header Start -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm p-3 px-md-4">
   		<a class="navbar-brand" href="#">Ely's source</a>
@@ -51,8 +53,8 @@
         <!-- Pricing End -->
    </div>
 
-    <div id="app">    
-        <div class="container">
+      
+    <div class="container">
                   
        <div class="card-deck text-center">
              <card-item v-for="card in cardContent" v-bind:key="card.id" v-bind:card="card"></card-item>
@@ -157,12 +159,13 @@
     </div>
   </footer>-->
     </div>
-    </div>
+    
+</div>
     
     
     
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!--JQUERY -->
@@ -186,17 +189,16 @@ $( "#next_skill_frontend" ).click(function() {
 <!--JQUERY END-->
 <!-- Vue -->
 <script>
-    // Define a new component called card-item
     Vue.component('card-item', {
       props: ['card'],
-      template: `<div class="card text-white bg-blue mb-3">
+      template: `<div class="card text-white bg-blue mb-3" :class="card.bgColor">
                   <div class="card-header">{{card.title}}</div>
                   <div class="card-body">
                     <h5 class="card-title">{{card.secondTitle}}</h5>
                     <p class="card-text">{{card.description}}</p>
                   </div>
                   <div class="">
-                      <a href="#" class="btn mx-auto btn-md btn-block bg-light">Know more</a>
+                      <a :href="card.link" class="btn mx-auto btn-md btn-block bg-light">Know more</a>
                     </div>
                 </div>`
     })
@@ -204,16 +206,14 @@ $( "#next_skill_frontend" ).click(function() {
     var app = new Vue({
       el: '#app',
       data: {
-        //message: 'You loaded this page on ' + new Date().toLocaleString()
-          message: 'Hello world',
           show: false,
           cardContent: [
             
-              {id: 1, title: 'Web Design', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-blue'},
+              {id: 1, title: 'Web Design', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-blue', link:'design'},
             
-              {id: 2, title: 'Frontend Development', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-purple'},
+              {id: 2, title: 'Frontend Development', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-purple', link:'frontend'},
               
-              {id: 3, title: 'Backend Development & SQL', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-blue'},
+              {id: 3, title: 'Backend Development & SQL', secondTitle: 'Secondary card title', description: 'Some quick example text to build on the card title and make up the bulk of the cards content.', bgColor: 'bg-blue', link:'backend'},
           ]
       },
     
